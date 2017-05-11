@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drew DeCarme | Welcome</title>
+
+	<!-- Meta Tags -->
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Favicons -->
+	<link rel="apple-touch-icon" sizes="57x57" href="./images/favicons/apple-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="./images/favicons/apple-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="./images/favicons/apple-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="./images/favicons/apple-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="./images/favicons/apple-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="./images/favicons/apple-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="./images/favicons/apple-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="./images/favicons/apple-icon-152x152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="./images/favicons/apple-icon-180x180.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="./images/favicons/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="./images/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="./images/favicons/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="./images/favicons/favicon-16x16.png">
+
+	<!-- STYLES -->
+	<link rel="stylesheet" type="text/css" href="./styles/website.css">
+
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="./scripts/objects.js"></script>
+	<script type="text/javascript" src="./scripts/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript" src="./scripts/website.js"></script>
+	<script type="text/javascript" src="./scripts/project-plugin.js"></script>
+
+</head>
+<body onload="website.init('main')">
+	<ul class="nav-bar">
+		<li data-collapse="nav">
+			<button type="button" role="button" aria-label="Toggle Navigation" data-navicon="button" class="icon-menu navicon navicon-x">
+	      		<span class="lines"></span>
+		    </button>
+		</li>
+		<li>
+			<a href="#about" data-target="on-page">
+				<span class="scroll-hide">learn some more</span>
+				<span>ABOUT</span>
+				<span class="scroll-hide">me</span>
+			</a>
+		</li>
+		<li>
+			<a href="#portfolio" data-target="on-page">
+				<span class="scroll-hide">take a look at my</span>
+				<span>PORTFOLIO</span>
+			</a>
+		</li>
+		<li>
+			<a href="#contact" data-target="on-page">
+				<span>CONTACT</span>
+				<span class="scroll-hide">me</span>
+			</a>
+		</li>
+	</ul>
+	<div class="section banner" id="banner">
+		<a class="logo full" id="logo" href="#banner" data-target="on-page"></a>
+		<div class="title" id="title">Lead UI/UX Developer based in Philadelphia, PA</div>
+		<ul class="social full" id="social"></ul>
+	</div>
+	<div class="section" id="about"></div>
+	<div class="section portfolio" id="portfolio">
+		<div class="title">Here's some of my work</div>
+		<div class="content" id="project-container">
+			<div class="more-container">
+				<div class="pointer"></div>
+				<button class="close"></button>
+				<div class="more-content">
+					<div class="image"></div>
+					<div class="right">
+						<div class="title"></div>
+						<div class="description"></div>
+						<div class="actions"></div>
+						<div class="tag-container"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="bttn bttn-project-action" href="./projects" id="view-full-port">
+			<span></span>
+			<span>View my portfolio in its entirety here</span>
+		</a>
+	</div>
+	<div class="section contact" id="contact">
+		<div class="item title">Say hello.</div>
+		<div class="content">
+			<div>I am currently available for short term / smaller front end freelance projects.</div>
+		</div>
+		
+	</div>
+	<div class="footer">
+		<p>Copyright (c) 2016 Drew DeCarme</p>
+	</div>
+</body>
+</html>

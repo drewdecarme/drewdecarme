@@ -1,0 +1,69 @@
+$navicon-color: white !default
+$navicon-transition: all .25s ease-in-out !default
+$navicon-base: 1rm !default
+$navicon-space: $navicon-base / 4 !default
+$navicon-size: 1.75rem !default
+$navicon-radius: $navicon-size / 14 !default
+
+@mixin navicon-lines
+	display: inline-block
+	width: $navicon-size
+	height: $navicon-size / 9.5
+	background: $navicon-color
+	border-radius: $navicon-radius
+	transition: $navicon-transition
+
+[data-navicon="button"]
+	display: inline-block
+	padding: 20px
+	border: none
+	background: none
+	padding-bottom: 25px
+
+.navicon
+	transition: $navicon-transition
+
+	& > .lines
+		@include navicon-lines
+		position: relative
+
+		&:before,
+		&:after
+			content: ''
+			@include navicon-lines
+			position: absolute
+			left: 0
+			transform-origin: $navicon-size/14 center
+
+		&:before
+			top: $navicon-size/4
+		&:after
+			top: -$navicon-size/4
+
+	&.open &
+		transform: scale3d(.8,.8,.8)
+
+.navicon-x
+	&.open
+		& > .lines
+			background: transparent
+
+			&:before,
+			&:after
+				transform-origin: 50% 50%
+				top: 0
+				width: $navicon-size
+
+			&:before
+				transform: rotate3d(0, 0, 1, 45deg)
+			&:after
+				transform: rotate3d(0, 0, 1, -45deg)
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,933 @@
+// IMPORTS
+@import './navicon.css'
+@import './reset.css'
+@import '../fonts/Lato.css'
+
+$mobile-sm-width: 320px
+$mobile-md-width: 375px
+$mobile-lg-width: 425px
+$tablet-rg-width: 768px
+$laptop-rg-width: 1024px
+$laptop-lg-width: 1440px
+
+@mixin neverUsed
+	@media (max-width: #{$mobile-sm-width - 1px})
+		@content
+
+@mixin smallPhone
+	@media (min-width: #{$mobile-sm-width}) and (max-width: #{$mobile-md-width - 1px})
+		@content
+
+@mixin mediumPhone
+	@media (min-width: #{$mobile-md-width}) and (max-width: #{$mobile-lg-width - 1px})
+		@content
+
+@mixin largePhone
+	@media (min-width: #{$mobile-lg-width}) and (max-width: #{$tablet-rg-width - 1px})
+		@content
+
+@mixin tablet
+	@media (min-width: #{$tablet-rg-width}) and (max-width: #{$laptop-rg-width - 1px})
+		@content
+
+@mixin laptop
+	@media (min-width: #{$laptop-rg-width}) and (max-width: #{$laptop-lg-width - 1px})
+		@content
+
+@mixin largeLaptop
+	@media (min-width: #{$laptop-lg-width})
+		@content
+
+
+$color1: rgba(185, 214, 242, 1)
+$color2: rgba(0, 109, 170, 1)
+$color3: rgba(3, 83, 164, 1)
+$color4: rgba(0, 53, 89, 1)
+$color5: rgba(6, 26, 64, 1)
+$color5clear: rgba(6, 26, 64, .97)
+
+// $color1: rgba(197, 209, 235, 1)
+// $color2: rgba(146, 175, 215, 1)
+// $color3: rgba(90, 118, 132, 1)
+// $color4: rgba(57, 91, 80, 1)
+// $color5: rgba(31, 47, 22, 1)
+
+
+// $color1: rgba(220, 225, 222, 1)
+// $color2: rgba(156, 197, 161, 1)
+// $color3: rgba(73, 160, 120, 1)
+// $color4: rgba(33, 104, 105, 1)
+// $color5: rgba(31, 36, 33, 1)
+
+// $color1: rgba(239, 246, 224, 1)
+// $color2: rgba(174, 195, 176, 1)
+// $color3: rgba(89, 131, 146, 1)
+// $color4: rgba(18, 69, 89, 1)
+// $color5: rgba(1, 22, 30, 1)
+
+// $color1: rgba(194, 231, 217, 1)
+// $color2: rgba(166, 207, 213, 1)
+// $color3: rgba(38, 64, 139, 1)
+// $color4: rgba(15, 8, 75, 1)
+// $color5: rgba(13, 2, 33, 1)
+
+$transAll: all .25s ease-in-out
+$transQuick: all .15s ease-in-out
+$transSlow: all .4s ease-in-out
+
+$logoWidth: 300px
+$itemHeight: 50px
+$socialWidth: 400px
+
+
+$sides: 75px
+$sides50: 50px
+$sides25: 25px
+
+$height: 500px
+$height350: 350px
+
+
+
+
+
+// ********************** NAV BAR *********************************
+ul.nav-bar
+	position: fixed
+	display: flex
+	width: 100%
+	top: 0
+	right: 0
+	left: 0
+	z-index: 1000
+
+	& > li
+		display: list-item
+
+		&[data-collapse="nav"]
+			display: none
+
+		& > a
+			padding: 20px
+			font-weight: 300
+			font-size: 18px
+			display: block
+			text-decoration: none
+			color: #FFF
+			transition: $transAll
+
+			& > span.scroll-hide
+				font-weight: 200
+
+
+			@include laptop
+				& > span.scroll-hide
+					display: none
+
+			@include tablet
+				& > span.scroll-hide
+					display: none
+
+	@include tablet
+		& > li
+			display: none
+			&[data-collapse="nav"]
+				display: list-item
+
+	@include largePhone
+		& > li
+			display: none
+			&[data-collapse="nav"]
+				display: list-item
+
+	@include mediumPhone
+		& > li
+			display: none
+			&[data-collapse="nav"]
+				display: list-item
+
+	@include smallPhone
+		& > li
+			display: none
+			&[data-collapse="nav"]
+				display: list-item
+
+	@include neverUsed
+		& > li
+			display: none
+			&[data-collapse="nav"]
+				display: list-item
+
+
+	&.dark
+		transition: $transAll
+		box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.50)
+		background: rgba(255, 255, 255, .97)
+
+		& > li
+			& > a
+				transition: $transAll
+				color: $color3
+
+			& > button span
+				background: $color3
+				border-radius: 3px
+
+				&:before,
+				&:after
+					background: $color3
+					border-radius: 3px
+
+	&.open
+		position: fixed
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		background: $color5clear
+		z-index: 1200
+		display: flex
+		flex-direction: column
+		transition: $transAll
+
+		& > li
+			display: block
+			width: 100%
+			transition: $transAll
+
+			&:not([data-collapse="nav"])
+				text-align: center
+
+			& > a
+				color: #FFF
+				display: block !important
+
+
+
+
+
+
+// ********************** SECTION *********************************
+div.section
+	padding: $sides
+	text-align: center
+	background-color: #FFF
+
+	@include tablet
+		padding: $sides50
+
+	@include largePhone
+		padding: $sides25
+
+	@include mediumPhone
+		padding: $sides25
+
+	@include smallPhone
+		padding: $sides25
+
+	@include neverUsed
+		padding: $sides25
+
+	& > div.title
+		font-weight: 200
+		font-size: 42px
+		line-height: 50px
+
+	& > div.content
+		margin-top: $sides
+
+		& > p
+			font-size: 24px
+			line-height: 34px
+			font-weight: 200
+			margin-top: 30px
+
+	@include tablet
+		& > div.title
+			font-size: 36px
+			line-height: 44px
+
+		& > div.content
+			margin-top: $sides50
+
+			& > p
+				font-size: 22px
+				line-height: 32px
+				margin-top: 25px
+
+	@include largePhone
+		& > div.title
+			font-size: 32px
+			line-height: 40px
+
+		& > div.content
+			margin-top: $sides50
+
+			& > p
+				font-size: 18px
+				line-height: 26px
+				margin-top: 25px
+
+	@include mediumPhone
+		& > div.title
+			font-size: 32px
+			line-height: 40px
+
+		& > div.content
+			margin-top: $sides25
+
+			& > p
+				font-size: 18px
+				line-height: 26px
+				margin-top: 25px
+
+	@include smallPhone
+		& > div.title
+			font-size: 32px
+			line-height: 40px
+
+		& > div.content
+			margin-top: $sides25
+
+			& > p
+				font-size: 18px
+				line-height: 26px
+				margin-top: 25px
+
+	@include neverUsed
+		& > div.title
+			font-size: 32px
+			line-height: 40px
+
+		& > div.content
+			margin-top: $sides25
+
+			& > p
+				font-size: 18px
+				line-height: 26px
+				margin-top: 25px
+
+		
+
+
+
+
+
+
+// ********************** BANNER *********************************
+.banner
+	height: $height
+	display: flex
+	justify-content: center
+	align-items: center
+	background: $color5
+	background: -webkit-linear-gradient(to right, $color5 , $color2)
+	background: linear-gradient(to right, $color5 , $color2)
+
+	& > .logo,
+	& > .social,
+		position: fixed
+		transition: $transAll
+		z-index: 1001
+
+	& > .title
+		font-weight: 200
+		font-size: 36px
+		line-height: 50px
+		color: #FFF
+		height: auto
+		transition: $transAll
+		z-index: 20
+
+		@include largePhone
+			font-size: 24px !important
+			line-height: 30px !important
+
+		@include mediumPhone
+			font-size: 24px !important
+			line-height: 30px !important
+
+		@include smallPhone
+			font-size: 24px !important
+			line-height: 30px !important
+
+		@include neverUsed
+			font-size: 24px !important
+			line-height: 30px !important
+
+		&.nav
+			opacity: 0
+			z-index: -1
+			transition: $transAll
+
+	& > .logo
+		display: block
+		height: $itemHeight
+		width: $logoWidth
+		right: 50%
+		margin-right: -$logoWidth/2
+		background: url(../images/logo-personal-light.png) center / contain no-repeat
+		top: 135px
+
+		@include smallPhone
+			top: 170px
+			margin-right: -($logoWidth/2)/2
+			height: $itemHeight/2
+			width: $logoWidth/2
+
+		@include neverUsed
+			margin-right: -($logoWidth/2)/2
+			height: $itemHeight/2
+			width: $logoWidth/2
+
+		&.dark
+			background: url(../images/logo-personal-dark.png) center / contain no-repeat
+
+		&.nav
+			top: 20px
+			right: 20px
+			height: 22px
+			width: $logoWidth/2
+			margin-right: 0
+
+	& > .social,
+		display: flex
+		width: $socialWidth
+		height: auto
+		justify-content: space-between
+		right: 50%
+		margin-right: -$socialWidth/2
+		top: 325px
+		transition: $transAll
+
+		@include largePhone
+			top: 310px
+			width: $socialWidth/2
+			margin-right: -($socialWidth/2)/2
+
+		@include mediumPhone
+			top: 310px
+			width: $socialWidth/2
+			margin-right: -($socialWidth/2)/2
+
+		@include smallPhone
+			display: none
+
+		@include neverUsed
+			display: none
+
+		& > li
+			& > a
+				display: block
+				height: 35px
+				width: 35px
+				background-size: contain
+				background-repeat: no-repeat
+				background-position: center
+				position: relative
+				cursor: pointer
+				transition: $transAll
+
+				@include largePhone
+					width: 25px
+					height: 25px
+
+				@include mediumPhone
+					width: 25px
+					height: 25px
+
+				&.resume
+					background-image: url(../images/icon-social-resume.svg)
+
+				&.linkedin
+					background-image: url(../images/icon-social-linkedin.svg)
+
+				&.facebook
+					background-image: url(../images/icon-social-facebook.svg)
+
+				&.instagram
+					background-image: url(../images/icon-social-instagram.svg)
+
+				&.twitter
+					background-image: url(../images/icon-social-twitter.svg)
+
+				& > span
+					display: none
+
+		&.nav,
+			right: ($logoWidth / 2) + 50
+			top: 20px
+			margin-right: 0
+			transition: $transAll
+			width: $socialWidth/2
+
+			@include largePhone
+				opacity: 0
+				z-index: -1
+				transition: $transAll
+
+			@include mediumPhone
+				opacity: 0
+				z-index: -1
+				transition: $transAll
+
+			@include smallPhone
+				opacity: 0
+				z-index: -1
+				transition: $transAll
+
+			@include neverUsed
+				opacity: 0
+				z-index: -1
+				transition: $transAll
+
+			& > li
+				& > a
+					height: 22px
+					width: 22px
+					transition: $transAll
+
+		&.dark
+			& > li
+				& > a
+					&.resume
+						background-image: url(../images/icon-social-resume-dark.svg)
+
+					&.linkedin
+						background-image: url(../images/icon-social-linkedin-dark.svg)
+
+					&.facebook
+						background-image: url(../images/icon-social-facebook-dark.svg)
+
+					&.instagram
+						background-image: url(../images/icon-social-instagram-dark.svg)
+
+					&.twitter
+						background-image: url(../images/icon-social-twitter-dark.svg)
+
+
+// ********************** PORTFOLIO *********************************
+.portfolio
+	background-color: #eaeaea !important
+
+	& > .content
+		display: flex
+		flex-direction: row
+		flex-wrap: wrap
+		justify-content: space-around
+		position: relative
+
+		& > .project
+			height: 300px
+			width: 300px
+			border-radius: 5px
+			position: relative
+			margin-bottom: 50px
+			background: #FFF center / contain no-repeat
+			background-size: 70%
+			padding: 0 50px
+
+			& > .project-type,
+			& > .project-quick
+				position: absolute
+				height: 0
+				left: 0
+				right: 0
+				transition: height .25s ease-in-out
+				overflow: hidden
+				display: flex
+				flex-direction: column
+				justify-content: space-around
+				align-items: center
+				text-align: center
+
+				
+
+			& > .project-type
+				top: 0
+				background: $color3
+				font-size: 22px
+				text-transform: uppercase
+				font-weight: 100
+				color: #FFF
+				border-top-right-radius: 5px
+				border-top-left-radius: 5px
+
+			& > .project-quick
+				bottom: 0
+				background: rgba(46,46,46,.9)
+				font-size: 14px
+				line-height: 20px
+				border-bottom-right-radius: 5px
+				border-bottom-left-radius: 5px
+
+				& > div
+					width: 80%
+					font-weight: 200
+					color: #FFF
+
+				& > button
+					padding: 8px
+					font-family: Lato
+					border: 1px solid $color1
+					border-radius: 2px
+					font-weight: 100
+					color: $color1
+					background: transparent
+					cursor: pointer
+					transition: $transAll
+
+					&:hover
+						border: 1px solid #FFF
+						color: #FFF
+						transition: $transAll
+
+					&:active
+						outline: none
+
+			&:hover,
+			&.active
+				transition: $transQuick
+
+				& > .project-type
+					height: 25%
+					transition: $transQuick
+
+				& > .project-quick
+					height: 75%
+					transition: $transQuick
+
+
+
+
+
+
+// ********************** MORE CONTAINER *********************************
+.more-container
+	display: none
+	position: absolute
+	background: #FFF
+	left: -$sides
+	right: -$sides
+	padding: $sides
+
+	@include tablet
+		padding: $sides50
+		left: -$sides50
+		right: -$sides50
+
+	@include largePhone
+		padding: $sides25
+		left: -$sides25
+		right: -$sides25
+
+	@include mediumPhone
+		padding: $sides25
+		left: -$sides25
+		right: -$sides25
+
+	@include smallPhone
+		padding: $sides25
+		left: -$sides25
+		right: -$sides25
+
+	@include neverUsed
+		padding: $sides25
+		left: -$sides25
+		right: -$sides25
+
+	& > .pointer
+		margin-left: -$sides
+		position: absolute
+		top: -49px
+		width: 0
+		height: 0
+		border-left: 50px solid transparent
+		border-right: 50px solid transparent
+		border-bottom: 50px solid #FFF
+		margin-left: -50px
+		transition: $transSlow
+
+	& > button.close
+		position: absolute
+		background: url(../images/icon-general-close.svg) center / contain no-repeat
+		height: 25px
+		width: 25px
+		border: none
+		top: $sides/3
+		right: $sides/3
+		cursor: pointer
+
+	& > .more-content
+		display: table
+		text-align: left
+
+		@include largeLaptop
+			table-layout: fixed
+
+		@include laptop
+			table-layout: fixed
+
+		@include tablet
+			display: flex
+			flex-direction: column
+
+		@include largePhone
+			display: flex
+			flex-direction: column
+
+		@include mediumPhone
+			display: flex
+			flex-direction: column
+
+		@include smallPhone
+			display: flex
+			flex-direction: column
+
+		@include neverUsed
+			display: flex
+			flex-direction: column
+
+		& > div
+			width: 50%
+			
+			@include largeLaptop
+				display: table-cell
+
+			@include laptop
+				display: table-cell
+
+			@include tablet
+				width: 100%
+				display: block
+
+			@include largePhone
+				width: 100%
+				display: block
+
+			@include mediumPhone
+				width: 100%
+				display: block
+
+			@include smallPhone
+				width: 100%
+				display: block
+
+			@include neverUsed
+				width: 100%
+				display: block
+
+		& > .image
+			background-position: top center
+			background-size: contain
+			background-repeat: no-repeat
+
+			@include largeLaptop
+				height: 100%
+				border-right: 50px solid #FFF
+
+			@include laptop
+				height: 100%
+				border-right: 50px solid #FFF
+
+			@include tablet
+				width: 100%
+				height: 300px
+				display: block
+				margin-bottom: $sides25
+
+			@include largePhone
+				width: 100%
+				height: 200px
+				display: block
+				margin-top: $sides25
+				margin-bottom: $sides25
+
+			@include mediumPhone
+				width: 100%
+				height: 200px
+				display: block
+				margin-top: $sides25
+				margin-bottom: $sides25
+
+			@include smallPhone
+				width: 100%
+				height: 200px
+				display: block
+				margin-top: $sides50
+				margin-bottom: $sides25
+
+			@include neverUsed
+				width: 100%
+				height: 300px
+				display: block
+				margin-bottom: $sides25
+
+		& > .right
+			& > .title
+				font-size: 30px
+				font-weight: 200
+				line-height: 40px
+				width: 90%
+
+			& > .description
+				font-size: 18px
+				line-height: 26px
+				font-weight: 200
+				padding: 15px 0
+
+				& > p:not(:last-child)
+					margin-bottom: 10px
+
+			& > .actions
+				display: flex
+				flex-wrap: wrap
+				padding: 15px 15px 0 0
+
+				& > div.no-show
+					color: #C22F00
+					font-weight: 300
+					font-size: 14px
+					padding-left: 25px
+					position: relative
+					margin-bottom: 15px
+
+					&:before
+						content: ''
+						position: absolute
+						top: 0
+						bottom: 0
+						left: 0
+						width: 20px
+						background: url(../images/icon-general-error.svg) center / contain no-repeat
+
+				& > a
+					margin: 0 15px 15px 0
+					display: inline-block
+
+					@include largePhone
+						display: block
+						text-align: center
+						width: 100%
+						margin-right: 0
+
+					@include mediumPhone
+						display: block
+						width: 100%
+						text-align: center
+						margin-right: 0
+
+					@include smallPhone
+						display: block
+						width: 100%
+						text-align: center
+						margin-right: 0
+
+					@include neverUsed
+						display: block
+						width: 100%
+						text-align: center
+						margin-right: 0
+
+			& > .tag-container
+				display: flex
+				flex-wrap: wrap
+				padding: 15px 0 0 0
+
+
+
+
+
+// ********************** CONTACT *********************************
+.contact
+	position: relative
+	font-size: 24px
+	color: $color5
+	line-height: 36px
+	font-weight: 200
+	width: 100%
+
+
+
+// ********************** CONTACT *********************************
+div.footer
+	padding: $sides25
+	background: $color5
+	font-weight: 200
+	color: #FFF
+	font-size: 14px
+
+	@include largePhone
+		padding: $sides25
+		font-size: 12px
+		text-align: center
+
+	@include mediumPhone
+		padding: $sides25
+		font-size: 12px
+		text-align: center
+
+	@include smallPhone
+		padding: $sides25
+		font-size: 12px
+		text-align: center
+
+
+
+
+
+
+
+// ********************** COMMON ELEMENTS *********************************
+.bttn-project-action
+	background: trasparent
+	text-decoration: none
+	padding: 10px
+	border: 1px solid $color4
+	border-radius: 3px
+	font-weight: 200
+	color: $color4
+	font-size: 16px
+	transition: $transAll
+
+	&:hover
+		border: 1px solid $color5
+		color: #FFF
+		background: $color5
+
+.tag
+	color: #fff
+	text-shadow: 0 1px 0 rgba(0,0,0,.15)
+	line-height: 18px
+	display: inline
+	border-radius: 2px
+	font-size: 16px
+	font-weight: 200
+	background: #FF6E40
+	padding: 4px 9px
+	margin: 0 10px 10px 0
+	white-space: nowrap
+	
+	
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+

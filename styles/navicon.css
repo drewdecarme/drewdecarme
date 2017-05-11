@@ -1,0 +1,47 @@
+[data-navicon="button"] {
+  display: inline-block;
+  padding: 20px;
+  border: none;
+  background: none;
+  padding-bottom: 25px; }
+
+.navicon {
+  transition: all 0.25s ease-in-out; }
+  .navicon > .lines {
+    display: inline-block;
+    width: 1.75rem;
+    height: 0.18421rem;
+    background: white;
+    border-radius: 0.125rem;
+    transition: all 0.25s ease-in-out;
+    position: relative; }
+    .navicon > .lines:before, .navicon > .lines:after {
+      content: "";
+      display: inline-block;
+      width: 1.75rem;
+      height: 0.18421rem;
+      background: white;
+      border-radius: 0.125rem;
+      transition: all 0.25s ease-in-out;
+      position: absolute;
+      left: 0;
+      transform-origin: 0.125rem center; }
+    .navicon > .lines:before {
+      top: 0.4375rem; }
+    .navicon > .lines:after {
+      top: -0.4375rem; }
+  .navicon.open .navicon {
+    transform: scale3d(0.8, 0.8, 0.8); }
+
+.navicon-x.open > .lines {
+  background: transparent; }
+  .navicon-x.open > .lines:before, .navicon-x.open > .lines:after {
+    transform-origin: 50% 50%;
+    top: 0;
+    width: 1.75rem; }
+  .navicon-x.open > .lines:before {
+    transform: rotate3d(0, 0, 1, 45deg); }
+  .navicon-x.open > .lines:after {
+    transform: rotate3d(0, 0, 1, -45deg); }
+
+/*# sourceMappingURL=navicon.css.map */
